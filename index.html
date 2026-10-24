@@ -13,6 +13,9 @@
 <meta property="og:title" content="Jingrui Wu (吴京瑞)">
 <meta property="og:description" content="Machine learning for single-cell biology and medical imaging. M.S. Statistics, Rice University.">
 <meta property="og:url" content="https://jingrui-wu.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,182 +35,455 @@
 </script>
 <style>
 :root {
-  --bg: #ffffff;
-  --fg: #111111;
-  --muted: #5c5c5c;
-  --rule: #d4d4d4;
-  --link: #111111;
+  --paper: #ffffff;
+  --ink: #1b1b26;
+  --soft: #5d5d6b;
+  --faint: #e4e3ec;
+  --stain: #3b3a8c;
+  --stain-soft: #ecebf7;
+  --serif: "Literata", Georgia, "Songti SC", serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #121212;
-    --fg: #ececec;
-    --muted: #a3a3a3;
-    --rule: #3a3a3a;
-    --link: #ececec;
+    --paper: #15151c;
+    --ink: #e9e8f0;
+    --soft: #a3a2b3;
+    --faint: #2c2c38;
+    --stain: #a9a7f0;
+    --stain-soft: #23223a;
   }
 }
+:root[data-theme="dark"] {
+  --paper: #15151c; --ink: #e9e8f0; --soft: #a3a2b3; --faint: #2c2c38; --stain: #a9a7f0; --stain-soft: #23223a;
+}
+
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: Georgia, "Times New Roman", "Songti SC", serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.68;
+  font-optical-sizing: auto;
 }
-main { max-width: 760px; margin: 0 auto; padding: 56px 20px 72px; }
-a { color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { text-decoration-thickness: 2px; }
-header h1 { font-size: 34px; font-weight: 400; margin: 0; letter-spacing: 0.01em; }
-header h1 .zh { font-size: 24px; color: var(--muted); margin-left: 8px; }
-.role { margin: 6px 0 14px; color: var(--muted); }
-.links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
-nav { margin-top: 28px; border-top: 1px solid var(--fg); border-bottom: 1px solid var(--rule); padding: 8px 0; display: flex; flex-wrap: wrap; gap: 4px 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
-nav a { text-decoration: none; color: var(--muted); }
-nav a:hover { color: var(--fg); }
-section { margin-top: 44px; }
-h2 { font-size: 13px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
-p { margin: 0 0 12px; }
-.pub { margin: 0 0 18px; }
-.pub .title { font-weight: 600; }
-.pub .venue { font-style: italic; }
-.pub .meta { font-size: 14px; color: var(--muted); }
-.note { font-size: 14px; color: var(--muted); }
-.item { display: grid; grid-template-columns: 1fr auto; gap: 0 16px; margin: 0 0 20px; }
-.item h3 { font-size: 17px; font-weight: 600; margin: 0; }
-.item .date { font-size: 14px; color: var(--muted); white-space: nowrap; }
-.item .sub { grid-column: 1 / -1; font-size: 15px; color: var(--muted); }
-.item .desc { grid-column: 1 / -1; margin-top: 4px; }
-footer { margin-top: 56px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-decoration-thickness: 2px; text-underline-offset: 4px; transition: text-decoration-color .15s; }
+a:hover { text-decoration-color: var(--stain); }
+a:focus-visible { outline: 2px solid var(--stain); outline-offset: 3px; border-radius: 2px; }
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 72px;
+}
+
+/* Sidebar */
+.side {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  padding: 64px 0 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.name {
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 350;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.name-zh {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--soft);
+  letter-spacing: 0.12em;
+}
+.role {
+  margin: 22px 0 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--soft);
+}
+.role strong { color: var(--ink); font-weight: 500; }
+.contact {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  display: grid;
+  gap: 6px;
+}
+.toc {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--faint);
+  font-family: var(--sans);
+  font-size: 14px;
+  display: grid;
+  gap: 8px;
+}
+.toc a { text-decoration: none; color: var(--soft); }
+.toc a:hover, .toc a[aria-current="true"] { color: var(--stain); }
+.side-foot {
+  margin-top: auto;
+  padding-top: 40px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--soft);
+}
+
+/* Main */
+main { padding: 64px 0 96px; min-width: 0; }
+.figure { margin: 0 0 8px; }
+.figure svg { display: block; width: 100%; height: auto; }
+.figure figcaption {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--soft);
+  max-width: 62ch;
+  margin-top: 10px;
+}
+.figure figcaption b { color: var(--ink); font-weight: 600; }
+
+.lede {
+  font-size: 23px;
+  line-height: 1.5;
+  font-weight: 350;
+  margin: 44px 0 0;
+  max-width: 34em;
+  letter-spacing: -0.005em;
+}
+.lede-more { max-width: 40em; margin: 18px 0 0; color: var(--ink); }
+.status {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 6px 12px;
+  background: var(--stain-soft);
+  color: var(--stain);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+section { margin-top: 88px; scroll-margin-top: 32px; }
+h2 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px;
+}
+
+/* Publications */
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
+.pub { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px; }
+.venue {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--stain);
+  line-height: 1.6;
+  padding-top: 2px;
+}
+.venue span { display: block; font-weight: 400; color: var(--soft); }
+.pub-title { font-size: 18px; font-weight: 500; line-height: 1.45; margin: 0; }
+.pub-authors { margin: 4px 0 0; color: var(--soft); font-size: 16px; }
+.pub-authors b { color: var(--ink); font-weight: 600; }
+.pub-venue { margin: 2px 0 0; font-style: italic; color: var(--soft); font-size: 15.5px; }
+.pub-link { margin: 6px 0 0; font-family: var(--sans); font-size: 14px; }
+.footnote { margin: 26px 0 0; font-family: var(--sans); font-size: 13px; color: var(--soft); }
+
+/* Research */
+.theme { margin-top: 44px; }
+.theme:first-of-type { margin-top: 0; }
+.theme-name {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--soft);
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--faint);
+}
+.project { margin: 0 0 30px; }
+.project-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.project h3 { font-size: 19px; font-weight: 500; line-height: 1.4; margin: 0; }
+.when { font-family: var(--sans); font-size: 13.5px; color: var(--soft); white-space: nowrap; }
+.where { margin: 2px 0 0; font-family: var(--sans); font-size: 14.5px; color: var(--soft); }
+.project p.desc { margin: 8px 0 0; max-width: 40em; }
+.result {
+  margin: 10px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--stain);
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.55;
+  max-width: 44em;
+}
+
+/* Education */
+.edu { display: grid; gap: 18px; }
+.edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.edu-row h3 { font-size: 18px; font-weight: 500; margin: 0; }
+.edu-row p { margin: 0; color: var(--soft); font-size: 16px; }
+
+.closing { max-width: 38em; }
+
+@media (max-width: 880px) {
+  .page { grid-template-columns: 1fr; gap: 0; padding: 0 20px; }
+  .side { position: static; min-height: 0; padding: 40px 0 0; }
+  .toc { display: none; }
+  .side-foot { display: none; }
+  main { padding-top: 36px; }
+  .lede { font-size: 20px; }
+  section { margin-top: 64px; }
+}
 @media (max-width: 560px) {
-  body { font-size: 16px; }
-  main { padding: 36px 16px 56px; }
-  header h1 { font-size: 28px; }
-  .item { grid-template-columns: 1fr; }
-  .item .date { margin-top: 2px; }
+  .page { padding: 0 16px; }
+  .name { font-size: 34px; }
+  .pub { grid-template-columns: 1fr; gap: 4px; }
+  .venue span { display: inline; margin-left: 6px; }
+  .project-head, .edu-row { flex-direction: column; gap: 0; }
 }
 </style>
 </head>
 <body>
+<div class="page">
+
+<aside class="side">
+  <h1 class="name">Jingrui Wu<span class="name-zh" lang="zh">吴京瑞</span></h1>
+  <p class="role"><strong>M.S. in Statistics</strong><br>Rice University, Houston</p>
+  <ul class="contact">
+    <li><a href="mailto:jw310@rice.edu">jw310@rice.edu</a></li>
+    <li><a href="assets/Jingrui_Wu_CV.pdf">CV (PDF)</a></li>
+    <li><a href="https://github.com/Jingrui-Wu">GitHub</a></li>
+  </ul>
+  <nav class="toc" aria-label="On this page">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#research">Research</a>
+    <a href="#education">Education</a>
+  </nav>
+  <p class="side-foot">Updated October 2026</p>
+</aside>
+
 <main>
+  <div id="about">
+    <figure class="figure" aria-labelledby="fig-cap">
+      <svg id="flow" viewBox="0 0 800 300" role="img" aria-label="Illustration: a population of control cells transported into a perturbed population with two sub-populations."></svg>
+      <figcaption id="fig-cap"><b>A perturbation, seen as a population.</b> Control cells (grey) are carried to a perturbed state (ink) that splits into sub-populations. Much of my work models responses like this as a transformation between distributions rather than a single average.</figcaption>
+    </figure>
 
-<header>
-  <h1>Jingrui Wu<span class="zh">吴京瑞</span></h1>
-  <p class="role">M.S. in Statistics, Rice University · Houston, TX</p>
-  <div class="links">
-    <a href="mailto:jw310@rice.edu">Email</a>
-    <a href="assets/Jingrui_Wu_CV.pdf">CV</a>
-    <a href="https://github.com/Jingrui-Wu">GitHub</a>
-  </div>
-</header>
-
-<nav aria-label="Sections">
-  <a href="#about">About</a>
-  <a href="#publications">Publications</a>
-  <a href="#research">Research</a>
-  <a href="#education">Education</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<section id="about">
-  <h2>About</h2>
-  <p>I am a Master of Statistics student at Rice University. I build machine learning methods for biomedicine that use explicit structure, such as biological relationships, physical constraints, and latent variables, to learn from incomplete and heterogeneous data.</p>
-  <p>My work spans single-cell perturbation prediction, single-cell foundation models, and medical imaging. In summer 2026 I was a research intern at the Abudayyeh–Gootenberg Lab, Harvard Medical School, working on benchmarking for a single-cell foundation model.</p>
-  <p>I am applying to PhD programs in Biomedical Engineering and Computational Biology for Fall 2027.</p>
-</section>
-
-<section id="publications">
-  <h2>Publications</h2>
-  <div class="pub">
-    <div class="title">Taming Neural Fields with a Frequency-Lipschitz Curriculum for Sparse-View CT Reconstruction</div>
-    <div>S. Hu<sup>*</sup>, <strong>J. Wu</strong><sup>*</sup>, H. Ding, F. Zhu, Y. Liu, and S. Xi</div>
-    <div><span class="venue">IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)</span>, 2027. Accepted.</div>
-    <div class="meta"><a href="mailto:jw310@rice.edu?subject=FLIC%20manuscript%20request">Request manuscript</a></div>
-  </div>
-  <div class="pub">
-    <div class="title">Synergy-Aware Residual Flow Matching for Single-Cell Perturbation Prediction</div>
-    <div><strong>J. Wu</strong><sup>*</sup>, W. Dan<sup>*</sup>, et al.</div>
-    <div><span class="venue">IEEE International Conference on Bioinformatics and Biomedicine (BIBM)</span>, 2026.</div>
-    <div class="meta"><a href="mailto:jw310@rice.edu?subject=SynGeneFlow%20manuscript%20request">Request manuscript</a></div>
-  </div>
-  <div class="pub">
-    <div class="title">Biology-Aware Model Merging for Domain-Adapted Single-Cell Foundation Models</div>
-    <div>W. Dan<sup>*</sup>, <strong>J. Wu</strong><sup>*,†</sup>, et al.</div>
-    <div><span class="venue">IEEE International Conference on Bioinformatics and Biomedicine (BIBM)</span>, 2026.</div>
-    <div class="meta"><a href="mailto:jw310@rice.edu?subject=Model%20merging%20manuscript%20request">Request manuscript</a></div>
-  </div>
-  <p class="note"><sup>*</sup>Co-first author. <sup>†</sup>Corresponding author.</p>
-</section>
-
-<section id="research">
-  <h2>Research</h2>
-
-  <div class="item">
-    <h3>Semiparametric latent variable modeling with covariate adjustment</h3>
-    <span class="date">2026.01 – present</span>
-    <span class="sub">Department of Statistics, Rice University · Advisor: Cindy Zhang</span>
-    <p class="desc">Monte Carlo studies of an EM-type estimating-equation procedure for latent-class models with monotone biomarker transformations, motivated by Alzheimer's disease biomarker data. The method matched or exceeded K-means, Gaussian mixture, and Ward clustering in every simulated scenario.</p>
+    <p class="lede">I build machine learning methods for biomedicine that use explicit structure, such as biological relationships, physical constraints and latent variables, to learn from incomplete and heterogeneous data.</p>
+    <p class="lede-more">My work spans single-cell perturbation prediction, single-cell foundation models, and medical imaging. In summer 2026 I was a research intern at the Abudayyeh–Gootenberg Lab at Harvard Medical School. Before statistics, I studied finance.</p>
+    <span class="status">Applying to PhD programs in Biomedical Engineering and Computational Biology for Fall 2027</span>
   </div>
 
-  <div class="item">
-    <h3>Dynamic token thinning ViTs for Alzheimer's disease classification</h3>
-    <span class="date">2026.03 – present</span>
-    <span class="sub">Department of Statistics, Rice University · Advisor: Cindy Zhang</span>
-    <p class="desc">Efficient vision transformers for CN vs. AD classification on ADNI MRI that adaptively discard uninformative image tokens, combining learnable token scoring, uncertainty-guided early exit, and teacher–student distillation. Ongoing.</p>
-  </div>
+  <section id="publications" aria-labelledby="h-pubs">
+    <h2 id="h-pubs">Publications</h2>
+    <ol class="pubs">
+      <li class="pub">
+        <div class="venue">WACV<span>2027</span></div>
+        <div>
+          <p class="pub-title">Taming Neural Fields with a Frequency-Lipschitz Curriculum for Sparse-View CT Reconstruction</p>
+          <p class="pub-authors">S. Hu<sup>*</sup>, <b>J. Wu</b><sup>*</sup>, H. Ding, F. Zhu, Y. Liu, and S. Xi</p>
+          <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision, accepted</p>
+          <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=FLIC%20manuscript%20request">Request the manuscript</a></p>
+        </div>
+      </li>
+      <li class="pub">
+        <div class="venue">BIBM<span>2026</span></div>
+        <div>
+          <p class="pub-title">Synergy-Aware Residual Flow Matching for Single-Cell Perturbation Prediction</p>
+          <p class="pub-authors"><b>J. Wu</b><sup>*</sup>, W. Dan<sup>*</sup>, et al.</p>
+          <p class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine</p>
+          <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=SynGeneFlow%20manuscript%20request">Request the manuscript</a></p>
+        </div>
+      </li>
+      <li class="pub">
+        <div class="venue">BIBM<span>2026</span></div>
+        <div>
+          <p class="pub-title">Biology-Aware Model Merging for Domain-Adapted Single-Cell Foundation Models</p>
+          <p class="pub-authors">W. Dan<sup>*</sup>, <b>J. Wu</b><sup>*,†</sup>, et al.</p>
+          <p class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine</p>
+          <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=Model%20merging%20manuscript%20request">Request the manuscript</a></p>
+        </div>
+      </li>
+    </ol>
+    <p class="footnote"><sup>*</sup>Co-first author. <sup>†</sup>Corresponding author.</p>
+  </section>
 
-  <div class="item">
-    <h3>Benchmarking a single-cell foundation model</h3>
-    <span class="date">2026.05 – 2026.08</span>
-    <span class="sub">Abudayyeh–Gootenberg Lab, Harvard Medical School · Summer Research Intern</span>
-    <p class="desc">Built a reproducible pipeline to evaluate the lab's perturbation-aware single-cell foundation model against scGPT, STATE, and X-Cell on held-out cell contexts, and converted mean-level baseline predictions into single-cell populations for cell-level evaluation.</p>
-  </div>
+  <section id="research" aria-labelledby="h-research">
+    <h2 id="h-research">Research</h2>
 
-  <div class="item">
-    <h3>Sparse-view CT reconstruction with frequency–Lipschitz capacity control</h3>
-    <span class="date">2026.01 – 2026.06</span>
-    <span class="sub">WACV 2027 · co-first author</span>
-    <p class="desc">An unsupervised neural-field method that schedules when high-frequency capacity is released, moving from coarse anatomy to fine detail. Best unsupervised PSNR/SSIM on four public CT datasets, and robust under low-dose acquisition.</p>
-  </div>
+    <div class="theme">
+      <h3 class="theme-name">Single-cell perturbation and foundation models</h3>
 
-  <div class="item">
-    <h3>Biology-aware model merging for single-cell foundation models</h3>
-    <span class="date">2025.12 – 2026.04</span>
-    <span class="sub">BIBM 2026 · co-first and corresponding author</span>
-    <p class="desc">Showed that continued-pretraining updates in scGPT are high-rank and noisy on inactive genes, and proposed GA-TSV-M, which combines adaptive rank allocation with gene-activity-aware masking. Best zero-shot cell-embedding quality among data-free merging methods on all six evaluation datasets.</p>
-  </div>
+      <article class="project">
+        <div class="project-head"><h3>Benchmarking a single-cell foundation model</h3><span class="when">2026.05 – 2026.08</span></div>
+        <p class="where">Summer Research Intern, Abudayyeh–Gootenberg Lab, Harvard Medical School</p>
+        <p class="desc">Built a reproducible pipeline to evaluate the lab's perturbation-aware foundation model against scGPT, STATE and X-Cell on held-out cell contexts, and turned mean-level baseline predictions into single-cell populations so they could be compared cell by cell.</p>
+      </article>
 
-  <div class="item">
-    <h3>SynGeneFlow: synergy-aware single-cell perturbation prediction</h3>
-    <span class="date">2025.09 – 2026.01</span>
-    <span class="sub">BIBM 2026 · co-first author</span>
-    <p class="desc">A conditional flow-matching model that starts from an additive perturbation prior and learns only the non-additive residual, improving recovery of genetic interaction effects on held-out combinatorial perturbations.</p>
-  </div>
-</section>
+      <article class="project">
+        <div class="project-head"><h3>Biology-aware model merging</h3><span class="when">2025.12 – 2026.04</span></div>
+        <p class="where">BIBM 2026, co-first and corresponding author</p>
+        <p class="desc">Continued pretraining leaves scGPT with high-rank updates and noise on genes the data never activated, so generic low-rank merging throws away signal. GA-TSV-M allocates rank per layer by spectral energy and masks embedding rows by gene activity.</p>
+        <p class="result">Best zero-shot cell-embedding quality among data-free merging methods on all six evaluation datasets.</p>
+      </article>
 
-<section id="education">
-  <h2>Education</h2>
-  <div class="item">
-    <h3>Rice University</h3>
-    <span class="date">2025.09 – 2026.12 (expected)</span>
-    <span class="sub">Master of Statistics · Houston, TX</span>
-  </div>
-  <div class="item">
-    <h3>Hunan University of Finance and Economics</h3>
-    <span class="date">2019.09 – 2023.06</span>
-    <span class="sub">Bachelor of Finance · Changsha, China</span>
-  </div>
-</section>
+      <article class="project">
+        <div class="project-head"><h3>SynGeneFlow</h3><span class="when">2025.09 – 2026.01</span></div>
+        <p class="where">BIBM 2026, co-first author</p>
+        <p class="desc">Most of a double perturbation's effect is the sum of its single effects. SynGeneFlow starts flow matching from that additive prior and spends its capacity on the non-additive residual, where genetic interactions live.</p>
+        <p class="result">On held-out double perturbations, synergy correlation improved 18% over the strongest flow-matching baseline.</p>
+      </article>
+    </div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>I welcome conversations about research and PhD opportunities for Fall 2027. Email: <a href="mailto:jw310@rice.edu">jw310@rice.edu</a></p>
-</section>
+    <div class="theme">
+      <h3 class="theme-name">Medical imaging</h3>
 
-<footer>Last updated October 2026</footer>
+      <article class="project">
+        <div class="project-head"><h3>Dynamic token thinning for Alzheimer's disease classification</h3><span class="when">2026.03 – present</span></div>
+        <p class="where">Department of Statistics, Rice University, with Cindy Zhang</p>
+        <p class="desc">Efficient vision transformers for MRI that learn which image tokens to drop, combining learnable token scoring, uncertainty-guided early exit and teacher–student distillation, on ADNI data. In progress.</p>
+      </article>
 
+      <article class="project">
+        <div class="project-head"><h3>Sparse-view CT with a frequency–Lipschitz curriculum</h3><span class="when">2026.01 – 2026.06</span></div>
+        <p class="where">WACV 2027, co-first author</p>
+        <p class="desc">With few projection views, a neural field will happily fit streak artifacts. Coupling Fourier-feature bandwidth with per-layer Lipschitz budgets releases high-frequency capacity gradually, from anatomy first to fine detail last.</p>
+        <p class="result">Best unsupervised PSNR and SSIM on four public CT datasets, and robust under low-dose acquisition.</p>
+      </article>
+    </div>
+
+    <div class="theme">
+      <h3 class="theme-name">Statistical methodology</h3>
+
+      <article class="project">
+        <div class="project-head"><h3>Semiparametric latent variable modeling with covariate adjustment</h3><span class="when">2026.01 – present</span></div>
+        <p class="where">Department of Statistics, Rice University, with Cindy Zhang</p>
+        <p class="desc">Latent-class models with monotone biomarker transformations, estimated by an EM and estimating-equation procedure and motivated by Alzheimer's disease biomarkers. I designed and ran the simulation studies.</p>
+        <p class="result">Matched or beat K-means, Gaussian mixtures and Ward clustering in every simulated scenario.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="education" aria-labelledby="h-edu">
+    <h2 id="h-edu">Education</h2>
+    <div class="edu">
+      <div>
+        <div class="edu-row"><h3>Rice University</h3><span class="when">2025.09 – 2026.12, expected</span></div>
+        <p class="where">Master of Statistics, Houston, TX</p>
+      </div>
+      <div>
+        <div class="edu-row"><h3>Hunan University of Finance and Economics</h3><span class="when">2019.09 – 2023.06</span></div>
+        <p class="where">Bachelor of Finance, Changsha, China</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="h-contact">
+    <h2 id="h-contact">Get in touch</h2>
+    <p class="closing">I'm glad to talk about research or PhD opportunities. Email me at <a href="mailto:jw310@rice.edu">jw310@rice.edu</a>.</p>
+  </section>
 </main>
+</div>
+
+<script>
+(function () {
+  var svg = document.getElementById('flow');
+  if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var seed = 7;
+  function rand() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  function gauss() { var u = 0, v = 0; while (!u) u = rand(); while (!v) v = rand(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+
+  var N = 150, cells = [];
+  for (var i = 0; i < N; i++) {
+    var sx = 150 + gauss() * 42, sy = 150 + gauss() * 42;
+    var up = rand() < 0.62;
+    var tx = up ? 610 + gauss() * 30 : 665 + gauss() * 22;
+    var ty = up ? 105 + gauss() * 30 : 215 + gauss() * 20;
+    var cx = (sx + tx) / 2 + gauss() * 20, cy = (sy + ty) / 2 + (up ? -45 : 40) + gauss() * 14;
+    cells.push({ sx: sx, sy: sy, tx: tx, ty: ty, cx: cx, cy: cy });
+  }
+
+  var paths = document.createElementNS(NS, 'g');
+  paths.setAttribute('fill', 'none');
+  paths.setAttribute('stroke', 'var(--faint)');
+  paths.setAttribute('stroke-width', '1');
+  var ghosts = document.createElementNS(NS, 'g');
+  ghosts.setAttribute('fill', 'var(--soft)');
+  ghosts.setAttribute('opacity', '0.35');
+  var dots = document.createElementNS(NS, 'g');
+  dots.setAttribute('fill', 'var(--stain)');
+
+  cells.forEach(function (c, k) {
+    if (k % 3 === 0) {
+      var p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', 'M' + c.sx.toFixed(1) + ' ' + c.sy.toFixed(1) + ' Q' + c.cx.toFixed(1) + ' ' + c.cy.toFixed(1) + ' ' + c.tx.toFixed(1) + ' ' + c.ty.toFixed(1));
+      paths.appendChild(p);
+    }
+    var g = document.createElementNS(NS, 'circle');
+    g.setAttribute('cx', c.sx.toFixed(1)); g.setAttribute('cy', c.sy.toFixed(1)); g.setAttribute('r', '3');
+    ghosts.appendChild(g);
+    var d = document.createElementNS(NS, 'circle');
+    d.setAttribute('r', '3.2');
+    c.el = d;
+    dots.appendChild(d);
+  });
+
+  function label(x, y, text, anchor) {
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('text-anchor', anchor || 'middle');
+    t.setAttribute('fill', 'var(--soft)');
+    t.setAttribute('font-family', 'Instrument Sans, sans-serif');
+    t.setAttribute('font-size', '14');
+    t.textContent = text;
+    svg.appendChild(t);
+  }
+  svg.appendChild(paths); svg.appendChild(ghosts); svg.appendChild(dots);
+  label(150, 285, 'control');
+  label(640, 285, 'perturbed');
+
+  function place(t) {
+    var e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    cells.forEach(function (c, k) {
+      var lag = (k % 10) * 0.025;
+      var u = Math.max(0, Math.min(1, (e - lag) / (1 - 0.25)));
+      var a = (1 - u) * (1 - u), b = 2 * (1 - u) * u, w = u * u;
+      c.el.setAttribute('cx', (a * c.sx + b * c.cx + w * c.tx).toFixed(1));
+      c.el.setAttribute('cy', (a * c.sy + b * c.cy + w * c.ty).toFixed(1));
+    });
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { place(1); return; }
+  place(0);
+  var start = null, dur = 2600;
+  function step(ts) {
+    if (start === null) start = ts + 400;
+    var t = Math.max(0, Math.min(1, (ts - start) / dur));
+    place(t);
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+</script>
 </body>
 </html>
