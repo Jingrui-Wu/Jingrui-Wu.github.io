@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jw310-wjr.github.io/sitemap.xml
+Sitemap: https://jingrui-wu.github.io/sitemap.xml
