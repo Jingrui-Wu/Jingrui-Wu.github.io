@@ -242,6 +242,34 @@ h2 {
 
 .closing { max-width: 38em; }
 
+
+/* Project figures */
+.project.has-fig { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 0 28px; }
+.project.has-fig > .body { min-width: 0; }
+.thumb {
+  margin: 4px 0 0; padding: 0; border: 1px solid var(--faint); border-radius: 6px; background: #fff;
+  cursor: zoom-in; overflow: hidden; display: block; width: 100%; align-self: start;
+  transition: border-color .15s;
+}
+.thumb:hover { border-color: var(--stain); }
+.thumb:focus-visible { outline: 2px solid var(--stain); outline-offset: 3px; }
+.thumb img { display: block; width: 100%; height: 132px; object-fit: cover; object-position: center; }
+.thumb span { display: block; padding: 6px 10px; font-family: var(--sans); font-size: 12.5px; color: #5d5d6b; text-align: left; border-top: 1px solid #e4e3ec; }
+dialog.viewer {
+  border: none; padding: 0; background: transparent; max-width: min(1200px, 94vw); width: 100%;
+}
+dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
+.viewer figure { margin: 0; background: #fff; border-radius: 8px; overflow: hidden; }
+.viewer img { display: block; width: 100%; height: auto; max-height: 80vh; object-fit: contain; }
+.viewer figcaption { padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: #3d3d4b; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.viewer button { font: inherit; font-size: 14px; border: 1px solid #d6d5e0; background: #fff; color: #1b1b26; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.viewer button:focus-visible { outline: 2px solid #3b3a8c; outline-offset: 2px; }
+@media (max-width: 720px) {
+  .project.has-fig { grid-template-columns: 1fr; }
+  .thumb { margin-top: 14px; max-width: 420px; }
+  .thumb img { height: auto; aspect-ratio: 16 / 9; }
+}
+
 @media (max-width: 880px) {
   .page { grid-template-columns: 1fr; gap: 0; padding: 0 20px; }
   .side { position: static; min-height: 0; padding: 40px 0 0; }
@@ -338,18 +366,24 @@ h2 {
         <p class="desc">Built a reproducible pipeline to evaluate the lab's perturbation-aware foundation model against scGPT, STATE and X-Cell on held-out cell contexts, and turned mean-level baseline predictions into single-cell populations so they could be compared cell by cell.</p>
       </article>
 
-      <article class="project">
+      <article class="project has-fig">
+        <div class="body">
         <div class="project-head"><h3>Biology-aware model merging</h3><span class="when">2025.12 – 2026.04</span></div>
         <p class="where">BIBM 2026, co-first and corresponding author</p>
         <p class="desc">Continued pretraining leaves scGPT with high-rank updates and noise on genes the data never activated, so generic low-rank merging throws away signal. GA-TSV-M allocates rank per layer by spectral energy and masks embedding rows by gene activity.</p>
         <p class="result">Best zero-shot cell-embedding quality among data-free merging methods on all six evaluation datasets.</p>
+      </div>
+        <button class="thumb" type="button" data-src="assets/fig-gatsvm.jpg" data-cap="Method overview. Rank diagnosis, gene-activity masking and layer-wise adaptive merging"><img src="assets/fig-gatsvm.jpg" alt="Method overview. Rank diagnosis, gene-activity masking and layer-wise adaptive merging" loading="lazy"><span>Method overview</span></button>
       </article>
 
-      <article class="project">
+      <article class="project has-fig">
+        <div class="body">
         <div class="project-head"><h3>SynGeneFlow</h3><span class="when">2025.09 – 2026.01</span></div>
         <p class="where">BIBM 2026, co-first author</p>
         <p class="desc">Most of a double perturbation's effect is the sum of its single effects. SynGeneFlow starts flow matching from that additive prior and spends its capacity on the non-additive residual, where genetic interactions live.</p>
         <p class="result">On held-out double perturbations, synergy correlation improved 18% over the strongest flow-matching baseline.</p>
+      </div>
+        <button class="thumb" type="button" data-src="assets/fig-syngeneflow.jpg" data-cap="Model overview. Perturbation-conditioned encoder and additive-prior residual flow"><img src="assets/fig-syngeneflow.jpg" alt="Model overview. Perturbation-conditioned encoder and additive-prior residual flow" loading="lazy"><span>Model overview</span></button>
       </article>
     </div>
 
@@ -362,22 +396,28 @@ h2 {
         <p class="desc">Efficient vision transformers for MRI that learn which image tokens to drop, combining learnable token scoring, uncertainty-guided early exit and teacher–student distillation, on ADNI data. In progress.</p>
       </article>
 
-      <article class="project">
+      <article class="project has-fig">
+        <div class="body">
         <div class="project-head"><h3>Sparse-view CT with a frequency–Lipschitz curriculum</h3><span class="when">2026.01 – 2026.06</span></div>
         <p class="where">WACV 2027, co-first author</p>
         <p class="desc">With few projection views, a neural field will happily fit streak artifacts. Coupling Fourier-feature bandwidth with per-layer Lipschitz budgets releases high-frequency capacity gradually, from anatomy first to fine detail last.</p>
         <p class="result">Best unsupervised PSNR and SSIM on four public CT datasets, and robust under low-dose acquisition.</p>
+      </div>
+        <button class="thumb" type="button" data-src="assets/fig-ct.jpg" data-cap="Framework. Dual-path Lipschitz network with prior-guided ray sampling"><img src="assets/fig-ct.jpg" alt="Framework. Dual-path Lipschitz network with prior-guided ray sampling" loading="lazy"><span>Framework</span></button>
       </article>
     </div>
 
     <div class="theme">
       <h3 class="theme-name">Statistical methodology</h3>
 
-      <article class="project">
+      <article class="project has-fig">
+        <div class="body">
         <div class="project-head"><h3>Semiparametric latent variable modeling with covariate adjustment</h3><span class="when">2026.01 – present</span></div>
         <p class="where">Department of Statistics, Rice University, with Cindy Zhang</p>
         <p class="desc">Latent-class models with monotone biomarker transformations, estimated by an EM and estimating-equation procedure and motivated by Alzheimer's disease biomarkers. I designed and ran the simulation studies.</p>
         <p class="result">Matched or beat K-means, Gaussian mixtures and Ward clustering in every simulated scenario.</p>
+      </div>
+        <button class="thumb" type="button" data-src="assets/fig-emee.jpg" data-cap="Simulation result. Mean ROC curves, three classes, weak separation: EMEE (blue) vs. GMM (green)"><img src="assets/fig-emee.jpg" alt="Simulation result. Mean ROC curves, three classes, weak separation: EMEE (blue) vs. GMM (green)" loading="lazy"><span>Simulation result</span></button>
       </article>
     </div>
   </section>
@@ -402,6 +442,28 @@ h2 {
   </section>
 </main>
 </div>
+
+<dialog class="viewer" id="viewer" aria-label="Figure viewer">
+  <figure>
+    <img id="viewer-img" src="" alt="">
+    <figcaption><span id="viewer-cap"></span><button type="button" id="viewer-close">Close</button></figcaption>
+  </figure>
+</dialog>
+<script>
+(function () {
+  var d = document.getElementById('viewer');
+  if (!d || !d.showModal) return;
+  var img = document.getElementById('viewer-img'), cap = document.getElementById('viewer-cap');
+  document.querySelectorAll('.thumb').forEach(function (b) {
+    b.addEventListener('click', function () {
+      img.src = b.dataset.src; img.alt = b.dataset.cap; cap.textContent = b.dataset.cap;
+      d.showModal();
+    });
+  });
+  document.getElementById('viewer-close').addEventListener('click', function () { d.close(); });
+  d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+})();
+</script>
 
 <script>
 (function () {
