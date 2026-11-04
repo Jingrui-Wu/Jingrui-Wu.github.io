@@ -212,3 +212,22 @@ figcaption { margin-top: 8px; font-size: 13px; color: var(--soft); }
 .cute .beam { animation: beam 1.2s ease-in-out infinite; }
 .cute .streak { stroke-opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .cute *, .cute { animation: none !important; } }
+
+/* ---------- Diagram player ---------- */
+.player { display: grid; grid-template-columns: auto 1fr; gap: 10px 12px; align-items: center; margin-top: 12px; }
+.player .pp { width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--stain); cursor: pointer; display: grid; place-items: center; }
+.player .pp:hover { opacity: .9; }
+.player .pp:focus-visible, .player .stage:focus-visible, .player .scrub:focus-visible { outline: 2px solid var(--stain); outline-offset: 3px; }
+.i-pause { width: 10px; height: 12px; border-left: 3.5px solid var(--paper); border-right: 3.5px solid var(--paper); }
+.i-play { width: 0; height: 0; margin-left: 3px; border-left: 11px solid var(--paper); border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.player .scrub { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; cursor: pointer;
+  background: linear-gradient(to right, var(--stain) var(--p, 0%), var(--faint) var(--p, 0%)); }
+.player .scrub::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); border: 3px solid var(--stain); box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+.player .scrub::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--stain); }
+.player .stages { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; }
+.player .stage { font: 500 13px/1.2 var(--sans); color: var(--ink); background: var(--card); border: 1px solid var(--faint); border-radius: 999px; padding: 6px 12px 6px 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: background .15s, border-color .15s; }
+.player .stage span { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--faint); color: var(--soft); font-size: 11.5px; font-weight: 600; }
+.player .stage:hover { border-color: var(--stain); }
+.player .stage.on { background: var(--stain-soft); border-color: var(--stain); color: var(--stain); }
+.player .stage.on span { background: var(--stain); color: var(--paper); }
+.player-hint { margin: 8px 0 0; font-size: 12.5px; color: var(--soft); }

@@ -246,6 +246,38 @@ h2 {
 .more { display: inline-block; margin-top: 6px; font-family: var(--sans); font-size: 13.5px; color: var(--stain); }
 @media (max-width: 560px) { .ptop { flex-direction: column; gap: 0; } .pitem { margin: 0 -10px; padding: 12px 10px; } }
 
+
+
+.hero-buddy { opacity: 0; animation: hero-pop .6s ease-out forwards; transform-box: fill-box; transform-origin: center; }
+@keyframes hero-pop { from { opacity: 0; transform: scale(.5) } 70% { opacity: 1; transform: scale(1.1) } to { opacity: 1; transform: scale(1) } }
+@media (prefers-reduced-motion: reduce) { .hero-buddy { animation: none; opacity: 1; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-bg { opacity: .08; } }
+/* Homepage illustrations */
+.h-ic { display: inline-block; width: 30px; height: 30px; margin-right: 10px; vertical-align: -6px; }
+.h-ic svg { width: 100%; height: 100%; display: block; }
+.pitem { display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 22px; align-items: center; }
+.ptext { display: block; min-width: 0; }
+.pthumb { display: block; width: 200px; height: auto; border-radius: 12px; box-shadow: 0 2px 10px rgba(59,47,128,.12); transition: transform .2s; }
+.pitem:hover .pthumb { transform: translateY(-2px) rotate(-1deg); }
+.pub { grid-template-columns: 112px minmax(0, 1fr) 150px; }
+.pubthumb { width: 150px; height: 96px; object-fit: cover; border-radius: 10px; border: 1px solid var(--faint); background: #fff; align-self: start; }
+.mascot { margin-top: 32px; display: flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 13px; color: var(--soft); }
+.mascot svg { width: 130px; height: auto; }
+@keyframes m-bob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-3px) } }
+@keyframes m-wave { 0%,100% { transform: rotate(0) } 50% { transform: rotate(-18deg) } }
+@keyframes m-tw { 0%,100% { opacity: .4; transform: scale(.7) } 50% { opacity: 1; transform: scale(1.1) } }
+.m-bob { animation: m-bob 2.4s ease-in-out infinite; }
+.m-wave { transform-box: fill-box; transform-origin: 0% 100%; animation: m-wave 1.2s ease-in-out infinite; }
+.m-tw { transform-box: fill-box; transform-origin: center; animation: m-tw 2.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .m-bob, .m-wave, .m-tw { animation: none; } }
+@media (max-width: 880px) { .mascot { display: none; } }
+@media (max-width: 720px) {
+  .pitem { grid-template-columns: 1fr; gap: 10px; }
+  .pthumb { width: 100%; order: -1; }
+  .pub { grid-template-columns: 1fr; }
+  .pubthumb { width: 100%; height: 120px; order: 3; }
+}
+
 /* Education */
 .edu { display: grid; gap: 18px; }
 .edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
@@ -318,6 +350,11 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
     <a href="#education">Education</a>
     <a href="#awards">Awards</a>
   </nav>
+<div class="mascot" aria-hidden="true"><svg viewBox="0 0 120 70"><defs><radialGradient id="mc" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#c9c2ff"/><stop offset="1" stop-color="#7b6ef6"/></radialGradient><radialGradient id="mc2" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#c8f5e8"/><stop offset="1" stop-color="#4fc3a1"/></radialGradient></defs>
+<g class="m-bob"><path d="M14 40 Q12 22 30 20 Q48 18 48 38 Q50 56 32 57 Q14 58 14 40Z" fill="url(#mc)"/><ellipse cx="24" cy="29" rx="4" ry="2.4" fill="#fff" opacity=".8"/><ellipse cx="27" cy="39" rx="1.6" ry="2.1" fill="#2b2540"/><ellipse cx="36" cy="39" rx="1.6" ry="2.1" fill="#2b2540"/><ellipse cx="23" cy="44" rx="2.4" ry="1.4" fill="#ff8fab" opacity=".6"/><ellipse cx="40" cy="44" rx="2.4" ry="1.4" fill="#ff8fab" opacity=".6"/><path d="M29 45 Q31.5 48 34 45" stroke="#2b2540" stroke-width="1.4" fill="none" stroke-linecap="round"/><path class="m-wave" d="M47 36 Q55 30 56 22" stroke="#7b6ef6" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+<g class="m-bob" style="animation-delay:-.8s"><circle cx="78" cy="46" r="12" fill="url(#mc2)"/><ellipse cx="74" cy="46" rx="1.3" ry="1.7" fill="#2b2540"/><ellipse cx="82" cy="46" rx="1.3" ry="1.7" fill="#2b2540"/><path d="M76 50 Q78 52 80 50" stroke="#2b2540" stroke-width="1.2" fill="none" stroke-linecap="round"/></g>
+<g class="m-bob" style="animation-delay:-1.6s"><circle cx="102" cy="52" r="8" fill="url(#mc)" opacity=".85"/><circle cx="99.5" cy="52" r="1.1" fill="#2b2540"/><circle cx="104.5" cy="52" r="1.1" fill="#2b2540"/></g>
+<path d="M60 14 l2 -6 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2z" fill="#ffcc4d" class="m-tw"/></svg><span>Say hi!</span></div>
   <p class="side-foot">Updated November 2026</p>
 </aside>
 
@@ -325,7 +362,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
   <div id="about">
     <figure class="figure" aria-labelledby="fig-cap">
       <svg id="flow" viewBox="0 0 800 300" role="img" aria-label="Illustration: a population of control cells transported into a perturbed population with two sub-populations."></svg>
-      <figcaption id="fig-cap"><b>How a perturbation changes a cell population.</b> Control cells (grey) shift to a perturbed state (blue) that splits into subgroups.</figcaption>
+      <figcaption id="fig-cap"><b>How a perturbation changes a cell population.</b> Control cells (blue) shift to a perturbed state that splits into two subgroups (purple and green).</figcaption>
     </figure>
 
     <p class="lede">Machine learning for single-cell biology and medical imaging.</p>
@@ -334,7 +371,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
   </div>
 
   <section id="publications" aria-labelledby="h-pubs">
-    <h2 id="h-pubs">Publications</h2>
+    <h2 id="h-pubs"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="9" y="5" width="22" height="29" rx="5" fill="#fff" stroke="#7b6ef6" stroke-width="2.4"/><path d="M14 14h12M14 19h12M14 24h7" stroke="#c9c2ff" stroke-width="2.4" stroke-linecap="round"/><circle cx="29" cy="30" r="6" fill="#ffcc4d"/><path d="M26.5 30l2 2 3.5-4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>Publications</h2>
     <ol class="pubs">
       <li class="pub">
         <div class="venue">WACV<span>2027</span></div>
@@ -344,6 +381,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
           <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision</p>
           <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=FLIC%20manuscript%20request">Request the manuscript</a></p>
         </div>
+        <img class="pubthumb" src="assets/fig-ct.jpg" alt="" loading="lazy">
       </li>
       <li class="pub">
         <div class="venue">BIBM<span>2026</span></div>
@@ -353,6 +391,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
           <p class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine</p>
           <p class="pub-link"><a href="https://arxiv.org/abs/2610.25021">arXiv</a></p>
         </div>
+        <img class="pubthumb" src="assets/fig-syngeneflow.jpg" alt="" loading="lazy">
       </li>
       <li class="pub">
         <div class="venue">BIBM<span>2026</span></div>
@@ -362,39 +401,40 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
           <p class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine</p>
           <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=Model%20merging%20manuscript%20request">Request the manuscript</a></p>
         </div>
+        <img class="pubthumb" src="assets/fig-gatsvm.jpg" alt="" loading="lazy">
       </li>
     </ol>
     <p class="footnote"><sup>*</sup>Co-first author. <sup>†</sup>Corresponding author.</p>
   </section>
 
   <section id="research" aria-labelledby="h-research">
-    <h2 id="h-research">Research</h2>
+    <h2 id="h-research"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M10 34h22" stroke="#7b6ef6" stroke-width="3" stroke-linecap="round"/><path d="M16 30c-6-1-8-8-3-12" stroke="#7b6ef6" stroke-width="2.6" fill="none" stroke-linecap="round"/><rect x="17" y="6" width="8" height="18" rx="3" transform="rotate(25 21 15)" fill="url(#hi-g)" stroke="#7b6ef6" stroke-width="2"/><circle cx="26" cy="29" r="4" fill="#4fc3a1"/><defs><linearGradient id="hi-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9c2ff"/><stop offset="1" stop-color="#7b6ef6"/></linearGradient></defs></svg></span>Research</h2>
     <div class="theme">
       <h3 class="theme-name">Single-cell perturbation and foundation models</h3>
       <ul class="plist">
-        <li><a class="pitem" href="research/syngeneflow.html"><span class="ptop"><span class="pname">SynGeneFlow</span><span class="when">2025.09 – 2026.01</span></span><span class="pone">A flow-matching model that starts from the additive guess and learns only how two perturbations interact.<span class="tag">BIBM 2026</span></span><span class="more">Read more &rarr;</span></a></li>
-        <li><a class="pitem" href="research/model-merging.html"><span class="ptop"><span class="pname">Biology-aware model merging</span><span class="when">2025.12 – 2026.04</span></span><span class="pone">Merging domain-adapted scGPT models without data, by giving each layer the rank it needs and ignoring genes the data never touched.<span class="tag">BIBM 2026</span></span><span class="more">Read more &rarr;</span></a></li>
-        <li><a class="pitem" href="research/benchmarking.html"><span class="ptop"><span class="pname">Benchmarking a single-cell foundation model</span><span class="when">2026.05 – 2026.08</span></span><span class="pone">A reproducible benchmark for a lab&#x27;s perturbation-aware foundation model, including a way to score mean-level baselines cell by cell.<span class="tag">Harvard Medical School</span></span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/syngeneflow.html"><span class="ptext"><span class="ptop"><span class="pname">SynGeneFlow</span><span class="when">2025.09 – 2026.01</span></span><span class="pone">A flow-matching model that starts from the additive guess and learns only how two perturbations interact.<span class="tag">BIBM 2026</span></span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/syngeneflow.webp" alt="" width="480" height="218" loading="lazy"></a></li>
+        <li><a class="pitem" href="research/model-merging.html"><span class="ptext"><span class="ptop"><span class="pname">Biology-aware model merging</span><span class="when">2025.12 – 2026.04</span></span><span class="pone">Merging domain-adapted scGPT models without data, by giving each layer the rank it needs and ignoring genes the data never touched.<span class="tag">BIBM 2026</span></span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/model-merging.webp" alt="" width="480" height="218" loading="lazy"></a></li>
+        <li><a class="pitem" href="research/benchmarking.html"><span class="ptext"><span class="ptop"><span class="pname">Benchmarking a single-cell foundation model</span><span class="when">2026.05 – 2026.08</span></span><span class="pone">A reproducible benchmark for a lab&#x27;s perturbation-aware foundation model, including a way to score mean-level baselines cell by cell.<span class="tag">Harvard Medical School</span></span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/benchmarking.webp" alt="" width="480" height="218" loading="lazy"></a></li>
       </ul>
     </div>
     <div class="theme">
       <h3 class="theme-name">Medical imaging</h3>
       <ul class="plist">
-        <li><a class="pitem" href="research/token-thinning.html"><span class="ptop"><span class="pname">Dynamic token thinning for Alzheimer&#x27;s disease classification</span><span class="when">2026.09 – present</span></span><span class="pone">A vision transformer for brain MRI that learns which image patches to drop, and stops early when it is already sure.</span><span class="more">Read more &rarr;</span></a></li>
-        <li><a class="pitem" href="research/sparse-view-ct.html"><span class="ptop"><span class="pname">Sparse-view CT with a frequency–Lipschitz curriculum</span><span class="when">2026.01 – 2026.06</span></span><span class="pone">Teaching a neural field to draw the anatomy first and the fine detail last, so it does not fit streak artifacts.<span class="tag">WACV 2027</span></span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/token-thinning.html"><span class="ptext"><span class="ptop"><span class="pname">Dynamic token thinning for Alzheimer&#x27;s disease classification</span><span class="when">2026.09 – present</span></span><span class="pone">A vision transformer for brain MRI that learns which image patches to drop, and stops early when it is already sure.</span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/token-thinning.webp" alt="" width="480" height="218" loading="lazy"></a></li>
+        <li><a class="pitem" href="research/sparse-view-ct.html"><span class="ptext"><span class="ptop"><span class="pname">Sparse-view CT with a frequency–Lipschitz curriculum</span><span class="when">2026.01 – 2026.06</span></span><span class="pone">Teaching a neural field to draw the anatomy first and the fine detail last, so it does not fit streak artifacts.<span class="tag">WACV 2027</span></span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/sparse-view-ct.webp" alt="" width="480" height="218" loading="lazy"></a></li>
       </ul>
     </div>
     <div class="theme">
       <h3 class="theme-name">Statistical methodology</h3>
       <ul class="plist">
-        <li><a class="pitem" href="research/latent-classes.html"><span class="ptop"><span class="pname">Semiparametric latent variable modeling</span><span class="when">2026.01 – present</span></span><span class="pone">Finding hidden patient subgroups from biomarkers, while accounting for age and genetics and without assuming a distribution.</span><span class="more">Read more &rarr;</span></a></li>
-        <li><a class="pitem" href="research/ndws.html"><span class="ptop"><span class="pname">National Dementia Workforce Study dashboard</span><span class="when">2026.09 – 2026.12</span></span><span class="pone">Survey-weighted estimates about the dementia care workforce, with honest uncertainty and rules for when not to show a number.</span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/latent-classes.html"><span class="ptext"><span class="ptop"><span class="pname">Semiparametric latent variable modeling</span><span class="when">2026.01 – present</span></span><span class="pone">Finding hidden patient subgroups from biomarkers, while accounting for age and genetics and without assuming a distribution.</span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/latent-classes.webp" alt="" width="480" height="218" loading="lazy"></a></li>
+        <li><a class="pitem" href="research/ndws.html"><span class="ptext"><span class="ptop"><span class="pname">National Dementia Workforce Study dashboard</span><span class="when">2026.09 – 2026.12</span></span><span class="pone">Survey-weighted estimates about the dementia care workforce, with honest uncertainty and rules for when not to show a number.</span><span class="more">Read more &rarr;</span></span><img class="pthumb" src="assets/thumbs/ndws.webp" alt="" width="480" height="218" loading="lazy"></a></li>
       </ul>
     </div>
   </section>
 
   <section id="education" aria-labelledby="h-edu">
-    <h2 id="h-edu">Education</h2>
+    <h2 id="h-edu"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M4 16l16-8 16 8-16 8z" fill="#7b6ef6"/><path d="M11 20v7c0 3 4 5 9 5s9-2 9-5v-7l-9 4z" fill="#c9c2ff"/><path d="M34 17v9" stroke="#ffcc4d" stroke-width="2.4" stroke-linecap="round"/><circle cx="34" cy="28" r="2.6" fill="#ffcc4d"/></svg></span>Education</h2>
     <div class="edu">
       <div>
         <div class="edu-row"><h3>Rice University</h3><span class="when">2025.09 – 2026.12</span></div>
@@ -408,7 +448,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
   </section>
 
   <section id="awards" aria-labelledby="h-awards">
-    <h2 id="h-awards">Honors &amp; Awards</h2>
+    <h2 id="h-awards"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M12 6h16v10c0 5-3.5 9-8 9s-8-4-8-9z" fill="#ffcc4d"/><path d="M12 9H7c0 6 3 9 6 9M28 9h5c0 6-3 9-6 9" stroke="#ffcc4d" stroke-width="2.6" fill="none"/><rect x="17" y="25" width="6" height="5" fill="#f5b72a"/><rect x="12" y="30" width="16" height="5" rx="2" fill="#7b6ef6"/><circle cx="17" cy="13" r="1.4" fill="#2b2540"/><circle cx="23" cy="13" r="1.4" fill="#2b2540"/><path d="M18 17q2 1.6 4 0" stroke="#2b2540" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg></span>Honors &amp; Awards</h2>
     <div class="edu">
       <div>
         <div class="edu-row"><h3>Rice Engineering Alumni (REA) Graduate Student Travel Grant</h3><span class="when">2026</span></div>
@@ -422,7 +462,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
   </section>
 
   <section id="contact" aria-labelledby="h-contact">
-    <h2 id="h-contact">Get in touch</h2>
+    <h2 id="h-contact"><span class="h-ic" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="5" y="10" width="30" height="21" rx="5" fill="#fff" stroke="#7b6ef6" stroke-width="2.4"/><path d="M7 13l13 9 13-9" stroke="#7b6ef6" stroke-width="2.4" fill="none" stroke-linejoin="round"/><path d="M32 6c2 0 4 2 4 4-3 0-4-2-4-4z" fill="#ff8fab"/><circle cx="31" cy="8" r="3" fill="#ff8fab"/></svg></span>Get in touch</h2>
     <p class="closing">I'm glad to talk about research or PhD opportunities. Email me at <a href="mailto:jw310@rice.edu">jw310@rice.edu</a>.</p>
   </section>
 </main>
@@ -466,7 +506,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
     var tx = up ? 610 + gauss() * 30 : 665 + gauss() * 22;
     var ty = up ? 105 + gauss() * 30 : 215 + gauss() * 20;
     var cx = (sx + tx) / 2 + gauss() * 20, cy = (sy + ty) / 2 + (up ? -45 : 40) + gauss() * 14;
-    cells.push({ sx: sx, sy: sy, tx: tx, ty: ty, cx: cx, cy: cy });
+    cells.push({ sx: sx, sy: sy, tx: tx, ty: ty, cx: cx, cy: cy, up: up });
   }
 
   var paths = document.createElementNS(NS, 'g');
@@ -474,7 +514,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
   paths.setAttribute('stroke', 'var(--faint)');
   paths.setAttribute('stroke-width', '1');
   var ghosts = document.createElementNS(NS, 'g');
-  ghosts.setAttribute('fill', 'var(--soft)');
+  ghosts.setAttribute('fill', '#8fa8ec');
   ghosts.setAttribute('opacity', '0.35');
   var dots = document.createElementNS(NS, 'g');
   dots.setAttribute('fill', 'var(--stain)');
@@ -489,7 +529,7 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
     g.setAttribute('cx', c.sx.toFixed(1)); g.setAttribute('cy', c.sy.toFixed(1)); g.setAttribute('r', '3');
     ghosts.appendChild(g);
     var d = document.createElementNS(NS, 'circle');
-    d.setAttribute('r', '3.2');
+    d.setAttribute('r', '3.2'); d.setAttribute('fill', c.up ? '#7b6ef6' : '#3fb995');
     c.el = d;
     dots.appendChild(d);
   });
@@ -507,6 +547,20 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
   svg.appendChild(paths); svg.appendChild(ghosts); svg.appendChild(dots);
   label(150, 285, 'control');
   label(640, 285, 'perturbed');
+  function blob(x, y, r, a, b, delay) {
+    return '<g class="hero-buddy" style="animation-delay:' + delay + 's"><circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="url(#hb-' + a + ')" stroke="' + b + '" stroke-width="1.2"/>' +
+      '<ellipse cx="' + (x - r * .38) + '" cy="' + (y - r * .42) + '" rx="' + r * .22 + '" ry="' + r * .13 + '" fill="#fff" opacity=".8"/>' +
+      '<ellipse cx="' + (x - r * .3) + '" cy="' + y + '" rx="' + r * .11 + '" ry="' + r * .15 + '" fill="#2b2540"/><ellipse cx="' + (x + r * .3) + '" cy="' + y + '" rx="' + r * .11 + '" ry="' + r * .15 + '" fill="#2b2540"/>' +
+      '<ellipse cx="' + (x - r * .56) + '" cy="' + (y + r * .25) + '" rx="' + r * .16 + '" ry="' + r * .1 + '" fill="#ff8fab" opacity=".6"/><ellipse cx="' + (x + r * .56) + '" cy="' + (y + r * .25) + '" rx="' + r * .16 + '" ry="' + r * .1 + '" fill="#ff8fab" opacity=".6"/>' +
+      '<path d="M' + (x - r * .16) + ' ' + (y + r * .24) + ' Q' + x + ' ' + (y + r * .42) + ' ' + (x + r * .16) + ' ' + (y + r * .24) + '" stroke="#2b2540" stroke-width="1.6" fill="none" stroke-linecap="round"/></g>';
+  }
+  svg.insertAdjacentHTML('afterbegin', '<defs>' +
+    '<radialGradient id="hb-b" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#e3ebff"/><stop offset="1" stop-color="#8fa8ec"/></radialGradient>' +
+    '<radialGradient id="hb-p" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#d9d3ff"/><stop offset="1" stop-color="#7b6ef6"/></radialGradient>' +
+    '<radialGradient id="hb-m" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#d2f5ea"/><stop offset="1" stop-color="#3fb995"/></radialGradient>' +
+    '<linearGradient id="hb-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7f5ff"/><stop offset="1" stop-color="#eefaf5"/></linearGradient></defs>' +
+    '<rect x="0" y="0" width="800" height="300" rx="20" fill="url(#hb-bg)" class="hero-bg"/>');
+  svg.insertAdjacentHTML('beforeend', blob(92, 88, 20, 'b', '#8fa8ec', 0) + blob(545, 52, 18, 'p', '#7b6ef6', 3.1) + blob(735, 252, 16, 'm', '#3fb995', 3.4));
 
   function place(t) {
     var e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
