@@ -1,0 +1,214 @@
+:root {
+  --paper: #ffffff; --ink: #1b1b26; --soft: #5d5d6b; --faint: #e4e3ec; --stain: #3b3a8c; --stain-soft: #ecebf7; --card: #f7f7fa; --teal: #0f766e;
+  --serif: "Literata", Georgia, "Songti SC", serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #15151c; --ink: #e9e8f0; --soft: #a3a2b3; --faint: #2c2c38; --stain: #a9a7f0; --stain-soft: #23223a; --card: #1c1c25; --teal: #5eead4; }
+}
+:root[data-theme="dark"] { --paper: #15151c; --ink: #e9e8f0; --soft: #a3a2b3; --faint: #2c2c38; --stain: #a9a7f0; --stain-soft: #23223a; --card: #1c1c25; --teal: #5eead4; }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+a:hover { text-decoration-color: var(--stain); }
+a:focus-visible { outline: 2px solid var(--stain); outline-offset: 3px; border-radius: 2px; }
+
+.top { max-width: 880px; margin: 0 auto; padding: 28px 24px 0; display: flex; justify-content: space-between; font-size: 14px; }
+.top a { text-decoration: none; color: var(--soft); }
+.top a:hover { color: var(--stain); }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 40px; }
+
+/* Hero */
+.hero { padding: 48px 0 8px; }
+.kicker { margin: 0; font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--stain); }
+h1 { font-family: var(--serif); font-size: 42px; line-height: 1.15; font-weight: 400; letter-spacing: -0.02em; margin: 10px 0 0; text-wrap: balance; }
+.chips { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { font-size: 13px; color: var(--soft); background: var(--card); border: 1px solid var(--faint); border-radius: 999px; padding: 3px 12px; }
+.cta { margin: 18px 0 0; }
+.btn { display: inline-block; text-decoration: none; font-size: 14px; font-weight: 500; color: #fff; background: var(--stain); padding: 8px 16px; border-radius: 6px; }
+.btn:hover { opacity: .9; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #15151c; } }
+.lead { font-family: var(--serif); font-size: 23px; line-height: 1.5; font-weight: 350; margin: 30px 0 0; max-width: 32em; }
+
+/* Blocks */
+.block { margin-top: 56px; }
+.block h2 { font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); margin: 0 0 16px; display: flex; align-items: center; gap: 12px; }
+.block h2::after { content: ""; flex: 1; height: 1px; background: var(--faint); }
+
+.glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.g { background: var(--card); border: 1px solid var(--faint); border-radius: 10px; padding: 16px 18px; }
+.g:last-child { background: var(--stain-soft); border-color: transparent; }
+.gl { display: block; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--stain); }
+.g p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.5; }
+
+figure { margin: 0; }
+.diagram svg { display: block; width: 100%; height: auto; background: var(--paper); border: 1px solid var(--faint); border-radius: 10px; padding: 10px; }
+figcaption { margin-top: 8px; font-size: 13px; color: var(--soft); }
+
+.steps { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.steps li { position: relative; border: 1px solid var(--faint); border-radius: 10px; padding: 14px 16px 16px; }
+.steps .n { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--stain); color: var(--paper); font-size: 12.5px; font-weight: 600; }
+.steps b { display: block; margin-top: 10px; font-size: 15.5px; font-weight: 600; }
+.steps li > span:last-child { display: block; margin-top: 4px; font-size: 14px; line-height: 1.5; color: var(--soft); }
+.sub { margin: 24px 0 0; font-size: 13px; font-weight: 600; color: var(--ink); }
+.sub + .chips { margin-top: 8px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.stat { padding: 16px 18px; background: var(--stain-soft); border-radius: 10px; }
+.stat b { display: block; font-size: 30px; font-weight: 600; color: var(--stain); line-height: 1.15; letter-spacing: -0.01em; }
+.stat span { display: block; margin-top: 6px; font-size: 13.5px; line-height: 1.4; }
+.small { margin: 12px 0 0; font-size: 13px; color: var(--soft); }
+
+.paperfig img { display: block; width: 100%; height: auto; border: 1px solid var(--faint); border-radius: 10px; background: #fff; }
+.role { margin: 0; padding: 14px 18px; border-left: 3px solid var(--stain); background: var(--card); border-radius: 0 10px 10px 0; font-size: 15.5px; }
+
+/* SVG paint classes */
+.f-soft { fill: var(--soft); } .f-stain { fill: var(--stain); } .f-faint { fill: var(--faint); } .f-stain-soft { fill: var(--stain-soft); }
+.s-soft { stroke: var(--soft); } .s-stain { stroke: var(--stain); } .s-faint { stroke: var(--faint); } .s-ink { stroke: var(--ink); }
+.t-soft { fill: var(--soft); } .t-stain { fill: var(--stain); } .t-ink { fill: var(--ink); }
+.box { fill: var(--paper); stroke: var(--faint); stroke-width: 1.5; }
+
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 64px; }
+.pager a { text-decoration: none; display: block; border: 1px solid var(--faint); border-radius: 10px; padding: 14px 18px; font-weight: 500; }
+.pager a span { display: block; font-size: 12px; font-weight: 500; color: var(--soft); text-transform: uppercase; letter-spacing: .06em; }
+.pager a:hover { border-color: var(--stain); color: var(--stain); }
+.pager .next { text-align: right; }
+.foot { max-width: 880px; margin: 0 auto; padding: 24px 24px 48px; font-size: 13px; color: var(--soft); }
+
+@media (max-width: 680px) {
+  .glance { grid-template-columns: 1fr; }
+  h1 { font-size: 32px; }
+  .lead { font-size: 19px; }
+  .top, .wrap, .foot { padding-left: 16px; padding-right: 16px; }
+  .hero { padding-top: 32px; }
+  .stat b { font-size: 24px; }
+  .pager { grid-template-columns: 1fr; }
+  .pager .next { text-align: left; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .steps li { padding: 12px; }
+  .steps b { margin-top: 6px; font-size: 14.5px; }
+  .steps li > span:last-child { font-size: 13px; }
+  .g { padding: 12px 14px; }
+}
+
+/* ---------- Animated diagrams (9s loop; base styles = final frame) ---------- */
+.anim .c-soft { color: var(--soft); } .anim .c-stain { color: var(--stain); } .f-ink { fill: var(--ink); }
+.anim .card { fill: var(--card); stroke: var(--faint); stroke-width: 1.5; } .anim .card-strong { stroke: var(--stain); stroke-opacity: .35; }
+.anim .pill rect { fill: var(--card); stroke: var(--faint); stroke-width: 1.5; } .anim .pill text { fill: var(--ink); font-size: 12.5px; font-weight: 500; }
+.anim .pill-stain rect { fill: var(--stain-soft); stroke: transparent; } .anim .pill-stain text { fill: var(--stain); font-weight: 600; }
+.anim .pill-teal rect { fill: color-mix(in srgb, var(--teal) 14%, var(--paper)); stroke: transparent; } .anim .pill-teal text { fill: var(--teal); font-weight: 600; }
+.anim .tok { fill: var(--stain); } .anim .drop1, .anim .drop2 { fill: var(--faint); }
+.anim .streak { opacity: 0; } .anim .arc { stroke-dasharray: 100; stroke-dashoffset: 0; } .anim .needle { transform: rotate(180deg); }
+.anim g, .anim rect, .anim line, .anim path { transform-box: view-box; }
+@keyframes wob { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-2.5px) } }
+.anim .wob { animation: wob 2.4s ease-in-out infinite; }
+.anim [class*=mv] { transform: translate(var(--dx), var(--dy)); } .anim .fo2 { opacity: 0; } .anim .burst { transform: translate(var(--dx), var(--dy)); }
+@keyframes ap1 { 0%,8% { opacity:0; transform: translateY(8px) } 15%,90% { opacity:1; transform:none } 96%,100% { opacity:0 } }
+.anim .ap1 { animation: ap1 9s ease-out infinite; }
+@keyframes dr1 { 0%,8% { stroke-dashoffset:100; opacity:0 } 9% { opacity:1 } 20%,90% { stroke-dashoffset:0; opacity:1 } 96%,100% { stroke-dashoffset:0; opacity:0 } }
+.anim .dr1 { stroke-dasharray:100; animation: dr1 9s ease-in-out infinite; }
+@keyframes mv1 { 0%,8% { transform:translate(0,0) } 23%,90% { transform:translate(var(--dx),var(--dy)) } 100% { transform:translate(0,0) } }
+.anim .mv1 { animation: mv1 9s cubic-bezier(.5,0,.2,1) infinite; }
+@keyframes fo1 { 0%,8% { opacity:1 } 13%,96% { opacity:0 } 100% { opacity:1 } }
+.anim .fo1 { animation: fo1 9s ease infinite; }
+@keyframes cc1 { 0%,8% { color: var(--soft) } 23%,92% { color: var(--c) } 100% { color: var(--soft) } }
+.anim .cc1 { animation-name: mv1, cc1; animation-duration:9s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.5,0,.2,1), ease; }
+@keyframes gr1 { 0%,8% { width:0 } 23%,90% { width:var(--w) } 100% { width:0 } }
+.anim .gr1 { animation: gr1 9s ease-out infinite; }
+@keyframes gy1 { 0%,8% { transform:scaleY(0) } 23%,90% { transform:scaleY(1) } 100% { transform:scaleY(0) } }
+.anim .gy1 { transform-box: view-box; animation: gy1 9s cubic-bezier(.3,1.4,.5,1) infinite; }
+@keyframes ap2 { 0%,22% { opacity:0; transform: translateY(8px) } 29%,90% { opacity:1; transform:none } 96%,100% { opacity:0 } }
+.anim .ap2 { animation: ap2 9s ease-out infinite; }
+@keyframes dr2 { 0%,22% { stroke-dashoffset:100; opacity:0 } 23% { opacity:1 } 34%,90% { stroke-dashoffset:0; opacity:1 } 96%,100% { stroke-dashoffset:0; opacity:0 } }
+.anim .dr2 { stroke-dasharray:100; animation: dr2 9s ease-in-out infinite; }
+@keyframes mv2 { 0%,22% { transform:translate(0,0) } 37%,90% { transform:translate(var(--dx),var(--dy)) } 100% { transform:translate(0,0) } }
+.anim .mv2 { animation: mv2 9s cubic-bezier(.5,0,.2,1) infinite; }
+@keyframes fo2 { 0%,22% { opacity:1 } 27%,96% { opacity:0 } 100% { opacity:1 } }
+.anim .fo2 { animation: fo2 9s ease infinite; }
+@keyframes cc2 { 0%,22% { color: var(--soft) } 37%,92% { color: var(--c) } 100% { color: var(--soft) } }
+.anim .cc2 { animation-name: mv2, cc2; animation-duration:9s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.5,0,.2,1), ease; }
+@keyframes gr2 { 0%,22% { width:0 } 37%,90% { width:var(--w) } 100% { width:0 } }
+.anim .gr2 { animation: gr2 9s ease-out infinite; }
+@keyframes gy2 { 0%,22% { transform:scaleY(0) } 37%,90% { transform:scaleY(1) } 100% { transform:scaleY(0) } }
+.anim .gy2 { transform-box: view-box; animation: gy2 9s cubic-bezier(.3,1.4,.5,1) infinite; }
+@keyframes ap3 { 0%,36% { opacity:0; transform: translateY(8px) } 43%,90% { opacity:1; transform:none } 96%,100% { opacity:0 } }
+.anim .ap3 { animation: ap3 9s ease-out infinite; }
+@keyframes dr3 { 0%,36% { stroke-dashoffset:100; opacity:0 } 37% { opacity:1 } 48%,90% { stroke-dashoffset:0; opacity:1 } 96%,100% { stroke-dashoffset:0; opacity:0 } }
+.anim .dr3 { stroke-dasharray:100; animation: dr3 9s ease-in-out infinite; }
+@keyframes mv3 { 0%,36% { transform:translate(0,0) } 51%,90% { transform:translate(var(--dx),var(--dy)) } 100% { transform:translate(0,0) } }
+.anim .mv3 { animation: mv3 9s cubic-bezier(.5,0,.2,1) infinite; }
+@keyframes fo3 { 0%,36% { opacity:1 } 41%,96% { opacity:0 } 100% { opacity:1 } }
+.anim .fo3 { animation: fo3 9s ease infinite; }
+@keyframes cc3 { 0%,36% { color: var(--soft) } 51%,92% { color: var(--c) } 100% { color: var(--soft) } }
+.anim .cc3 { animation-name: mv3, cc3; animation-duration:9s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.5,0,.2,1), ease; }
+@keyframes gr3 { 0%,36% { width:0 } 51%,90% { width:var(--w) } 100% { width:0 } }
+.anim .gr3 { animation: gr3 9s ease-out infinite; }
+@keyframes gy3 { 0%,36% { transform:scaleY(0) } 51%,90% { transform:scaleY(1) } 100% { transform:scaleY(0) } }
+.anim .gy3 { transform-box: view-box; animation: gy3 9s cubic-bezier(.3,1.4,.5,1) infinite; }
+@keyframes ap4 { 0%,50% { opacity:0; transform: translateY(8px) } 57%,90% { opacity:1; transform:none } 96%,100% { opacity:0 } }
+.anim .ap4 { animation: ap4 9s ease-out infinite; }
+@keyframes dr4 { 0%,50% { stroke-dashoffset:100; opacity:0 } 51% { opacity:1 } 62%,90% { stroke-dashoffset:0; opacity:1 } 96%,100% { stroke-dashoffset:0; opacity:0 } }
+.anim .dr4 { stroke-dasharray:100; animation: dr4 9s ease-in-out infinite; }
+@keyframes mv4 { 0%,50% { transform:translate(0,0) } 65%,90% { transform:translate(var(--dx),var(--dy)) } 100% { transform:translate(0,0) } }
+.anim .mv4 { animation: mv4 9s cubic-bezier(.5,0,.2,1) infinite; }
+@keyframes fo4 { 0%,50% { opacity:1 } 55%,96% { opacity:0 } 100% { opacity:1 } }
+.anim .fo4 { animation: fo4 9s ease infinite; }
+@keyframes cc4 { 0%,50% { color: var(--soft) } 65%,92% { color: var(--c) } 100% { color: var(--soft) } }
+.anim .cc4 { animation-name: mv4, cc4; animation-duration:9s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.5,0,.2,1), ease; }
+@keyframes gr4 { 0%,50% { width:0 } 65%,90% { width:var(--w) } 100% { width:0 } }
+.anim .gr4 { animation: gr4 9s ease-out infinite; }
+@keyframes gy4 { 0%,50% { transform:scaleY(0) } 65%,90% { transform:scaleY(1) } 100% { transform:scaleY(0) } }
+.anim .gy4 { transform-box: view-box; animation: gy4 9s cubic-bezier(.3,1.4,.5,1) infinite; }
+@keyframes ap5 { 0%,62% { opacity:0; transform: translateY(8px) } 69%,90% { opacity:1; transform:none } 96%,100% { opacity:0 } }
+.anim .ap5 { animation: ap5 9s ease-out infinite; }
+@keyframes dr5 { 0%,62% { stroke-dashoffset:100; opacity:0 } 63% { opacity:1 } 74%,90% { stroke-dashoffset:0; opacity:1 } 96%,100% { stroke-dashoffset:0; opacity:0 } }
+.anim .dr5 { stroke-dasharray:100; animation: dr5 9s ease-in-out infinite; }
+@keyframes mv5 { 0%,62% { transform:translate(0,0) } 77%,90% { transform:translate(var(--dx),var(--dy)) } 100% { transform:translate(0,0) } }
+.anim .mv5 { animation: mv5 9s cubic-bezier(.5,0,.2,1) infinite; }
+@keyframes fo5 { 0%,62% { opacity:1 } 67%,96% { opacity:0 } 100% { opacity:1 } }
+.anim .fo5 { animation: fo5 9s ease infinite; }
+@keyframes cc5 { 0%,62% { color: var(--soft) } 77%,92% { color: var(--c) } 100% { color: var(--soft) } }
+.anim .cc5 { animation-name: mv5, cc5; animation-duration:9s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(.5,0,.2,1), ease; }
+@keyframes gr5 { 0%,62% { width:0 } 77%,90% { width:var(--w) } 100% { width:0 } }
+.anim .gr5 { animation: gr5 9s ease-out infinite; }
+@keyframes gy5 { 0%,62% { transform:scaleY(0) } 77%,90% { transform:scaleY(1) } 100% { transform:scaleY(0) } }
+.anim .gy5 { transform-box: view-box; animation: gy5 9s cubic-bezier(.3,1.4,.5,1) infinite; }
+@keyframes pop { 0%,62% { transform: scale(.6); opacity:0 } 70% { transform: scale(1.08); opacity:1 } 74%,90% { transform: scale(1); opacity:1 } 96%,100% { opacity:0 } }
+.anim .pop { transform-box: fill-box; transform-origin: center; animation: pop 9s ease-out infinite; }
+.anim .ap4.pop { animation-name: pop; }
+@keyframes burst { 0%,30% { transform: translate(0,0); opacity:0 } 34% { opacity:1 } 48%,90% { transform: translate(var(--dx),var(--dy)); opacity:1 } 97%,100% { opacity:0 } }
+.anim .burst { animation: burst 9s cubic-bezier(.2,.8,.3,1) infinite; }
+@keyframes drop1 { 0%,22% { fill: var(--stain) } 30%,90% { fill: var(--faint) } 100% { fill: var(--stain) } }
+@keyframes drop2 { 0%,36% { fill: var(--stain) } 44%,90% { fill: var(--faint) } 100% { fill: var(--stain) } }
+.anim .drop1 { animation: drop1 9s ease infinite; } .anim .drop2 { animation: drop2 9s ease infinite; }
+@keyframes streak { 0%,15% { opacity:.35 } 50%,100% { opacity:0 } }
+.anim .streak { animation: streak 9s ease infinite; }
+@keyframes arc { 0%,15% { stroke-dashoffset:100 } 60%,92% { stroke-dashoffset:0 } 100% { stroke-dashoffset:100 } }
+.anim .arc { animation: arc 9s ease-in-out infinite; }
+@keyframes needle { 0%,15% { transform: rotate(0deg) } 60%,92% { transform: rotate(180deg) } 100% { transform: rotate(0deg) } }
+.anim .needle { animation: needle 9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .anim *, .anim { animation: none !important; } }
+.anim .mv1.fo2 { animation-name: mv1, fo2; animation-duration: 9s, 9s; animation-iteration-count: infinite, infinite; animation-timing-function: cubic-bezier(.5,0,.2,1), ease; }
+@media (prefers-reduced-motion: reduce) { .anim .mv1.fo2 { animation: none !important; } }
+
+/* ---------- Cute illustrations ---------- */
+.diagram svg.cute { padding: 0; border: none; background: none; border-radius: 18px; }
+.cute .tile { fill: #7b6ef6; fill-opacity: .42; stroke: #fff; stroke-width: 1.5; }
+.cute .tile.drop1, .cute .tile.drop2 { fill: #7b6ef6; fill-opacity: 0; }
+@keyframes tdrop1 { 0%,22% { fill-opacity: .42 } 30%,90% { fill-opacity: 0 } 100% { fill-opacity: .42 } }
+@keyframes tdrop2 { 0%,36% { fill-opacity: .42 } 44%,90% { fill-opacity: 0 } 100% { fill-opacity: .42 } }
+.cute .tile.drop1 { animation: tdrop1 9s ease infinite; } .cute .tile.drop2 { animation: tdrop2 9s ease infinite; }
+@keyframes twinkle { 0%,100% { transform: scale(.6) rotate(0deg); opacity: .5 } 50% { transform: scale(1.1) rotate(20deg); opacity: 1 } }
+.cute .twinkle { transform-box: fill-box; transform-origin: center; animation: twinkle 2.6s ease-in-out infinite; }
+@keyframes blink { 0%,90%,100% { opacity: 1 } 95% { opacity: .3 } }
+.cute .blink { animation: blink 3s ease infinite; }
+@keyframes spin { to { transform: rotate(360deg) } }
+.cute .spin { transform-box: fill-box; transform-origin: center; animation: spin 3s linear infinite; }
+@keyframes sway { 0%,100% { transform: rotate(-8deg) } 50% { transform: rotate(8deg) } }
+.cute .sway { animation: ap1 9s ease-out infinite, sway 2.2s ease-in-out infinite; }
+@keyframes beam { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+.cute .beam { animation: beam 1.2s ease-in-out infinite; }
+.cute .streak { stroke-opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .cute *, .cute { animation: none !important; } }

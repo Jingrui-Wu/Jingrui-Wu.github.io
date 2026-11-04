@@ -234,6 +234,18 @@ h2 {
   max-width: 44em;
 }
 
+
+/* Research list */
+.plist { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pitem { display: block; text-decoration: none; padding: 14px 16px; margin: 0 -16px; border-radius: 8px; transition: background .15s; }
+.pitem:hover { background: var(--stain-soft); }
+.ptop { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.pname { font-size: 19px; font-weight: 500; line-height: 1.4; }
+.pone { display: block; margin-top: 4px; max-width: 40em; color: var(--soft); font-size: 16px; line-height: 1.55; }
+.tag { display: inline-block; margin-left: 8px; font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--stain); white-space: nowrap; }
+.more { display: inline-block; margin-top: 6px; font-family: var(--sans); font-size: 13.5px; color: var(--stain); }
+@media (max-width: 560px) { .ptop { flex-direction: column; gap: 0; } .pitem { margin: 0 -10px; padding: 12px 10px; } }
+
 /* Education */
 .edu { display: grid; gap: 18px; }
 .edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
@@ -304,20 +316,21 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
     <a href="#publications">Publications</a>
     <a href="#research">Research</a>
     <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
   </nav>
-  <p class="side-foot">Updated October 2026</p>
+  <p class="side-foot">Updated November 2026</p>
 </aside>
 
 <main>
   <div id="about">
     <figure class="figure" aria-labelledby="fig-cap">
       <svg id="flow" viewBox="0 0 800 300" role="img" aria-label="Illustration: a population of control cells transported into a perturbed population with two sub-populations."></svg>
-      <figcaption id="fig-cap"><b>A perturbation, seen as a population.</b> Control cells (grey) are carried to a perturbed state (ink) that splits into sub-populations. Much of my work models responses like this as a transformation between distributions rather than a single average.</figcaption>
+      <figcaption id="fig-cap"><b>How a perturbation changes a cell population.</b> Control cells (grey) shift to a perturbed state (blue) that splits into subgroups.</figcaption>
     </figure>
 
-    <p class="lede">I build machine learning methods for biomedicine that use explicit structure, such as biological relationships, physical constraints and latent variables, to learn from incomplete and heterogeneous data.</p>
+    <p class="lede">Machine learning for single-cell biology and medical imaging.</p>
     <p class="lede-more">My work spans single-cell perturbation prediction, single-cell foundation models, and medical imaging. In summer 2026 I was a research intern at the Abudayyeh–Gootenberg Lab at Harvard Medical School. Before statistics, I studied finance.</p>
-    <span class="status">Applying to PhD programs in Biomedical Engineering and Computational Biology for Fall 2027</span>
+    <span class="status">Applying to PhD programs in Electrical and Computer Engineering and Computer Science for Fall 2027</span>
   </div>
 
   <section id="publications" aria-labelledby="h-pubs">
@@ -328,24 +341,24 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
         <div>
           <p class="pub-title">Taming Neural Fields with a Frequency-Lipschitz Curriculum for Sparse-View CT Reconstruction</p>
           <p class="pub-authors">S. Hu<sup>*</sup>, <b>J. Wu</b><sup>*</sup>, H. Ding, F. Zhu, Y. Liu, and S. Xi</p>
-          <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision, accepted</p>
+          <p class="pub-venue">IEEE/CVF Winter Conference on Applications of Computer Vision</p>
           <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=FLIC%20manuscript%20request">Request the manuscript</a></p>
         </div>
       </li>
       <li class="pub">
         <div class="venue">BIBM<span>2026</span></div>
         <div>
-          <p class="pub-title">Synergy-Aware Residual Flow Matching for Single-Cell Perturbation Prediction</p>
-          <p class="pub-authors"><b>J. Wu</b><sup>*</sup>, W. Dan<sup>*</sup>, et al.</p>
+          <p class="pub-title"><a href="https://arxiv.org/abs/2610.25021">Synergy-Aware Residual Flow Matching for Single-Cell Perturbation Prediction</a></p>
+          <p class="pub-authors"><b>J. Wu</b><sup>*</sup> and W. Dan<sup>*</sup></p>
           <p class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine</p>
-          <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=SynGeneFlow%20manuscript%20request">Request the manuscript</a></p>
+          <p class="pub-link"><a href="https://arxiv.org/abs/2610.25021">arXiv</a></p>
         </div>
       </li>
       <li class="pub">
         <div class="venue">BIBM<span>2026</span></div>
         <div>
           <p class="pub-title">Biology-Aware Model Merging for Domain-Adapted Single-Cell Foundation Models</p>
-          <p class="pub-authors">W. Dan<sup>*</sup>, <b>J. Wu</b><sup>*,†</sup>, et al.</p>
+          <p class="pub-authors">W. Dan<sup>*</sup> and <b>J. Wu</b><sup>*,†</sup></p>
           <p class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine</p>
           <p class="pub-link"><a href="mailto:jw310@rice.edu?subject=Model%20merging%20manuscript%20request">Request the manuscript</a></p>
         </div>
@@ -356,65 +369,27 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
 
   <section id="research" aria-labelledby="h-research">
     <h2 id="h-research">Research</h2>
-
     <div class="theme">
       <h3 class="theme-name">Single-cell perturbation and foundation models</h3>
-
-      <article class="project">
-        <div class="project-head"><h3>Benchmarking a single-cell foundation model</h3><span class="when">2026.05 – 2026.08</span></div>
-        <p class="where">Summer Research Intern, Abudayyeh–Gootenberg Lab, Harvard Medical School</p>
-        <p class="desc">Built a reproducible benchmarking pipeline for the lab's single-cell foundation model, reconstructing a published held-out evaluation setting and aligning checkpoints, gene spaces and metrics across models. Also converted mean-level baseline predictions into single-cell populations so that baselines could be evaluated at the cell level.</p>
-      </article>
-
-      <article class="project has-fig">
-        <div class="body">
-        <div class="project-head"><h3>Biology-aware model merging</h3><span class="when">2025.12 – 2026.04</span></div>
-        <p class="where">BIBM 2026, co-first and corresponding author</p>
-        <p class="desc">Continued pretraining leaves scGPT with high-rank updates and noise on genes the data never activated, so generic low-rank merging throws away signal. GA-TSV-M allocates rank per layer by spectral energy and masks embedding rows by gene activity.</p>
-        <p class="result">Best zero-shot cell-embedding quality among data-free merging methods on all six evaluation datasets.</p>
-      </div>
-        <button class="thumb" type="button" data-src="assets/fig-gatsvm.jpg" data-cap="Method overview. Rank diagnosis, gene-activity masking and layer-wise adaptive merging"><img src="assets/fig-gatsvm.jpg" alt="Method overview. Rank diagnosis, gene-activity masking and layer-wise adaptive merging" loading="lazy"><span>Method overview</span></button>
-      </article>
-
-      <article class="project has-fig">
-        <div class="body">
-        <div class="project-head"><h3>SynGeneFlow</h3><span class="when">2025.09 – 2026.01</span></div>
-        <p class="where">BIBM 2026, co-first author</p>
-        <p class="desc">Most of a double perturbation's effect is the sum of its single effects. SynGeneFlow starts flow matching from that additive prior and spends its capacity on the non-additive residual, where genetic interactions live.</p>
-        <p class="result">On held-out double perturbations, synergy correlation improved 18% over the strongest flow-matching baseline.</p>
-      </div>
-        <button class="thumb" type="button" data-src="assets/fig-syngeneflow.jpg" data-cap="Model overview. Perturbation-conditioned encoder and additive-prior residual flow"><img src="assets/fig-syngeneflow.jpg" alt="Model overview. Perturbation-conditioned encoder and additive-prior residual flow" loading="lazy"><span>Model overview</span></button>
-      </article>
+      <ul class="plist">
+        <li><a class="pitem" href="research/syngeneflow.html"><span class="ptop"><span class="pname">SynGeneFlow</span><span class="when">2025.09 – 2026.01</span></span><span class="pone">A flow-matching model that starts from the additive guess and learns only how two perturbations interact.<span class="tag">BIBM 2026</span></span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/model-merging.html"><span class="ptop"><span class="pname">Biology-aware model merging</span><span class="when">2025.12 – 2026.04</span></span><span class="pone">Merging domain-adapted scGPT models without data, by giving each layer the rank it needs and ignoring genes the data never touched.<span class="tag">BIBM 2026</span></span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/benchmarking.html"><span class="ptop"><span class="pname">Benchmarking a single-cell foundation model</span><span class="when">2026.05 – 2026.08</span></span><span class="pone">A reproducible benchmark for a lab&#x27;s perturbation-aware foundation model, including a way to score mean-level baselines cell by cell.<span class="tag">Harvard Medical School</span></span><span class="more">Read more &rarr;</span></a></li>
+      </ul>
     </div>
-
     <div class="theme">
       <h3 class="theme-name">Medical imaging</h3>
-
-      <article class="project">
-        <div class="project-head"><h3>Dynamic token thinning for Alzheimer's disease classification</h3><span class="when">2026.03 – present</span></div>
-        <p class="where">Department of Statistics, Rice University, with Cindy Zhang</p>
-        <p class="desc">Efficient vision transformers for MRI that learn which image tokens to drop, combining learnable token scoring, uncertainty-guided early exit and teacher–student distillation, on ADNI data. In progress.</p>
-      </article>
-
-      <article class="project has-fig">
-        <div class="body">
-        <div class="project-head"><h3>Sparse-view CT with a frequency–Lipschitz curriculum</h3><span class="when">2026.01 – 2026.06</span></div>
-        <p class="where">WACV 2027, co-first author</p>
-        <p class="desc">With few projection views, a neural field will happily fit streak artifacts. Coupling Fourier-feature bandwidth with per-layer Lipschitz budgets releases high-frequency capacity gradually, from anatomy first to fine detail last.</p>
-        <p class="result">Best unsupervised PSNR and SSIM on four public CT datasets, and robust under low-dose acquisition.</p>
-      </div>
-        <button class="thumb" type="button" data-src="assets/fig-ct.jpg" data-cap="Framework. Dual-path Lipschitz network with prior-guided ray sampling"><img src="assets/fig-ct.jpg" alt="Framework. Dual-path Lipschitz network with prior-guided ray sampling" loading="lazy"><span>Framework</span></button>
-      </article>
+      <ul class="plist">
+        <li><a class="pitem" href="research/token-thinning.html"><span class="ptop"><span class="pname">Dynamic token thinning for Alzheimer&#x27;s disease classification</span><span class="when">2026.09 – present</span></span><span class="pone">A vision transformer for brain MRI that learns which image patches to drop, and stops early when it is already sure.</span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/sparse-view-ct.html"><span class="ptop"><span class="pname">Sparse-view CT with a frequency–Lipschitz curriculum</span><span class="when">2026.01 – 2026.06</span></span><span class="pone">Teaching a neural field to draw the anatomy first and the fine detail last, so it does not fit streak artifacts.<span class="tag">WACV 2027</span></span><span class="more">Read more &rarr;</span></a></li>
+      </ul>
     </div>
-
     <div class="theme">
       <h3 class="theme-name">Statistical methodology</h3>
-
-      <article class="project">
-        <div class="project-head"><h3>Semiparametric latent variable modeling with covariate adjustment</h3><span class="when">2026.01 – present</span></div>
-        <p class="where">Department of Statistics, Rice University, with Cindy Zhang</p>
-        <p class="desc">I designed and ran the Monte Carlo simulation studies, covering binary and three-class settings at several levels of class separation, comparisons with standard clustering methods, and the evaluation workflow for class recovery and parameter estimation.</p>
-      </article>
+      <ul class="plist">
+        <li><a class="pitem" href="research/latent-classes.html"><span class="ptop"><span class="pname">Semiparametric latent variable modeling</span><span class="when">2026.01 – present</span></span><span class="pone">Finding hidden patient subgroups from biomarkers, while accounting for age and genetics and without assuming a distribution.</span><span class="more">Read more &rarr;</span></a></li>
+        <li><a class="pitem" href="research/ndws.html"><span class="ptop"><span class="pname">National Dementia Workforce Study dashboard</span><span class="when">2026.09 – 2026.12</span></span><span class="pone">Survey-weighted estimates about the dementia care workforce, with honest uncertainty and rules for when not to show a number.</span><span class="more">Read more &rarr;</span></a></li>
+      </ul>
     </div>
   </section>
 
@@ -422,12 +397,26 @@ dialog.viewer::backdrop { background: rgba(14, 14, 24, .82); }
     <h2 id="h-edu">Education</h2>
     <div class="edu">
       <div>
-        <div class="edu-row"><h3>Rice University</h3><span class="when">2025.09 – 2026.12, expected</span></div>
+        <div class="edu-row"><h3>Rice University</h3><span class="when">2025.09 – 2026.12</span></div>
         <p class="where">Master of Statistics, Houston, TX</p>
       </div>
       <div>
         <div class="edu-row"><h3>Hunan University of Finance and Economics</h3><span class="when">2019.09 – 2023.06</span></div>
         <p class="where">Bachelor of Finance, Changsha, China</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards" aria-labelledby="h-awards">
+    <h2 id="h-awards">Honors &amp; Awards</h2>
+    <div class="edu">
+      <div>
+        <div class="edu-row"><h3>Rice Engineering Alumni (REA) Graduate Student Travel Grant</h3><span class="when">2026</span></div>
+        <p class="where">For presenting at IEEE BIBM 2026</p>
+      </div>
+      <div>
+        <div class="edu-row"><h3>University Scholarship</h3><span class="when">2020, 2021</span></div>
+        <p class="where">Hunan University of Finance and Economics</p>
       </div>
     </div>
   </section>
